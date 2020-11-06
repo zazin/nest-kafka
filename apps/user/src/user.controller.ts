@@ -6,7 +6,7 @@ import { MessagePattern } from '@nestjs/microservices';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @MessagePattern({ cmd: 'user' })
+  @MessagePattern('user.all')
   async getUser(): Promise<string> {
     return this.userService.getUser();
   }
