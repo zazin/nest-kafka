@@ -1,8 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
-  getHello(): string {
-    return 'Hello World!';
+  async getUser(): Promise<string> {
+    const date = new Date().toUTCString();
+    Logger.log('user-success', date);
+    return date;
   }
 }
