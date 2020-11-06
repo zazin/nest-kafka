@@ -3,12 +3,12 @@ module.exports = {
     {
       name: 'api',
       script: 'dist/apps/api-gateway/main.js',
-      watch: false,
+      watch: true,
     },
     {
       name: 'user',
       script: 'dist/apps/user/main.js',
-      watch: false,
+      watch: true,
     },
   ],
 };
