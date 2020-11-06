@@ -10,6 +10,11 @@ async function bootstrap() {
       transport: Transport.KAFKA,
       options: {
         client: {
+          sasl: {
+            mechanism: 'plain',
+            username: ServerConfig.KAFKA_USER,
+            password: ServerConfig.KAFKA_PASSWORD,
+          },
           clientId: ServerConfig.KAFKA_CLIENT_ID,
           brokers: [`${ServerConfig.KAFKA_HOST}:${ServerConfig.KAFKA_PORT}`],
         },
