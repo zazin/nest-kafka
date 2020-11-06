@@ -14,6 +14,7 @@
       "entryFile": "main",
       "sourceRoot": "apps/api-gateway/src",
       "compilerOptions": {
+        "webpack": true,
         "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
       }
     },
@@ -23,6 +24,7 @@
       "entryFile": "main",
       "sourceRoot": "apps/user/src",
       "compilerOptions": {
+        "webpack": true,
         "tsConfigPath": "apps/user/tsconfig.app.json"
       }
     }
