@@ -10,6 +10,8 @@ async function bootstrap() {
       transport: Transport.KAFKA,
       options: {
         client: {
+          ssl: ServerConfig.KAFKA_SSL,
+          requestTimeout: 5000,
           sasl: {
             mechanism: 'plain',
             username: ServerConfig.KAFKA_USER,

@@ -14,6 +14,8 @@ import { ServerConfig } from '../../user/src/server-config';
         transport: Transport.KAFKA,
         options: {
           client: {
+            ssl: ServerConfig.KAFKA_SSL,
+            requestTimeout: 5000,
             sasl: {
               mechanism: 'plain',
               username: ServerConfig.KAFKA_USER,

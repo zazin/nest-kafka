@@ -38,4 +38,9 @@ export class ServerConfig {
     .get('KAFKA_GROUP_ID')
     .required()
     .asString();
+
+  public static readonly KAFKA_SSL: boolean = env
+    .get('KAFKA_SSL')
+    .required()
+    .asBool();
 }
