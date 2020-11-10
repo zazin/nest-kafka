@@ -14,11 +14,11 @@ services:
         volumes:
           - ./config/zoo_jaas.conf:/home/kafka/kafka/config/zoo_jaas.conf
           - ./config/zookeeper.properties:/home/kafka/kafka/config/zookeeper.properties
-    broker:
+    broker1:
         image: nurzazin/kafka:latest
         container_name: kafka
         restart: always
-        hostname: broker
+        hostname: broker1
         ports:
           - "9092:9092"
         depends_on:
@@ -28,3 +28,5 @@ services:
         volumes:
           - ./config/kafka_server_jaas.conf:/home/kafka/kafka/config/kafka_server_jaas.conf
           - ./config/server.properties:/home/kafka/kafka/config/server.properties
+          - /tmp/kafka/certificates/kafka.truststore:/certificates/kafka.truststore
+          - /tmp/kafka/certificates/kafka.keystore:/certificates/kafka.keystore

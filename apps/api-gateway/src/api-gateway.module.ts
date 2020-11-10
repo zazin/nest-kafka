@@ -4,6 +4,7 @@ import { ApiGatewayService } from './api-gateway.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ConfigModule } from '@nestjs/config';
 import { ServerConfig } from '../../user/src/server-config';
+import * as fs from 'fs';
 
 @Module({
   imports: [
@@ -14,13 +15,14 @@ import { ServerConfig } from '../../user/src/server-config';
         transport: Transport.KAFKA,
         options: {
           client: {
-            ssl: ServerConfig.KAFKA_SSL,
-            requestTimeout: 5000,
-            sasl: {
-              mechanism: 'plain',
-              username: ServerConfig.KAFKA_USER,
-              password: ServerConfig.KAFKA_PASSWORD,
+            ssl: {
+              rejectUnauthorized: false,
+              passphrase: ServerConfig.KAFKA_PASSWORD,
+              key: fs.readFileSync(ServerConfig.KAFKA_SSL_KEY, 'utf-8'),
+              cert: fs.readFileSync(ServerConfig.KAFKA_SSL_CERT, 'utf-8'),
+              ca: fs.readFileSync(ServerConfig.KAFKA_SSL_CA, 'utf-8'),
             },
+            requestTimeout: 5000,
             clientId: ServerConfig.KAFKA_CLIENT_ID,
             brokers: [`${ServerConfig.KAFKA_HOST}:${ServerConfig.KAFKA_PORT}`],
           },

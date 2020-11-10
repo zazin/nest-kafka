@@ -355,4 +355,4 @@ ess_cert_id_chain       = no    # Must the ESS cert id chain be included?
 DNS.1 = broker1
 DNS.2 = broker2
 DNS.3 = broker3
-IP.1 = 192.168.18.60
+IP.1 = 192.168.10.194

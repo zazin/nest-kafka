@@ -4,11 +4,6 @@ import { config } from 'dotenv';
 config();
 
 export class ServerConfig {
-  public static readonly PORT: number = env
-    .get('PORT')
-    .required()
-    .asPortNumber();
-
   public static readonly KAFKA_HOST: string = env
     .get('KAFKA_HOST')
     .required()
@@ -18,11 +13,6 @@ export class ServerConfig {
     .get('KAFKA_PORT')
     .required()
     .asPortNumber();
-
-  public static readonly KAFKA_USER: string = env
-    .get('KAFKA_USER')
-    .required()
-    .asString();
 
   public static readonly KAFKA_PASSWORD: string = env
     .get('KAFKA_PASSWORD')
@@ -39,8 +29,18 @@ export class ServerConfig {
     .required()
     .asString();
 
-  public static readonly KAFKA_SSL: boolean = env
-    .get('KAFKA_SSL')
+  public static readonly KAFKA_SSL_KEY: string = env
+    .get('KAFKA_SSL_KEY')
     .required()
-    .asBool();
+    .asString();
+
+  public static readonly KAFKA_SSL_CERT: string = env
+    .get('KAFKA_SSL_CERT')
+    .required()
+    .asString();
+
+  public static readonly KAFKA_SSL_CA: string = env
+    .get('KAFKA_SSL_CA')
+    .required()
+    .asString();
 }

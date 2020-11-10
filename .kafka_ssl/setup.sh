@@ -4,7 +4,7 @@
 CLUSTER_NAME_1=broker1  # Alias name (3 private name of the 3 brokers)
 CLUSTER_NAME_2=broker2
 CLUSTER_NAME_3=broker3
-CLUSTER_IP=192.168.18.60 # Public IP, Change if needed
+CLUSTER_IP=192.168.10.194 # Public IP, Change if needed
 BASE_DIR=/tmp/kafka # Path
 CERT_OUTPUT_PATH="$BASE_DIR/certificates" # certificates path
 PASSWORD=Aa123456! # password
