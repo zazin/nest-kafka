@@ -1,0 +1,30 @@
+version: '3'
+services:
+    zoo:
+        image: nurzazin/zookeeper:latest
+        container_name: zookeeper
+        restart: always
+        hostname: zoo
+        ports:
+          - "2181:2181"
+        environment:
+          KAFKA_OPTS: "-Djava.security.auth.login.config=/home/kafka/kafka/config/zoo_jaas.conf"
+          ZOO_MY_ID: 1
+          ZOO_SERVERS: server.1=zoo:2888:3888;2181
+        volumes:
+          - ./config/zoo_jaas.conf:/home/kafka/kafka/config/zoo_jaas.conf
+          - ./config/zookeeper.properties:/home/kafka/kafka/config/zookeeper.properties
+    broker:
+        image: nurzazin/kafka:latest
+        container_name: kafka
+        restart: always
+        hostname: broker
+        ports:
+          - "9092:9092"
+        depends_on:
+          - zoo
+        environment:
+          KAFKA_OPTS: "-Djava.security.auth.login.config=/home/kafka/kafka/config/kafka_server_jaas.conf"
+        volumes:
+          - ./config/kafka_server_jaas.conf:/home/kafka/kafka/config/kafka_server_jaas.conf
+          - ./config/server.properties:/home/kafka/kafka/config/server.properties
